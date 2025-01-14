@@ -6,7 +6,7 @@
     <title>Suivi des Cours du Permis</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
@@ -21,26 +21,30 @@
         }
         header h1 {
             margin: 0;
-            font-size: 1.8em;
+            font-size: 2em;
         }
         .container {
             max-width: 800px;
             margin: 20px auto;
             padding: 20px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .lesson {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.2s ease, background-color 0.3s ease;
         }
-        .lesson:last-child {
-            border-bottom: none;
+        .lesson:hover {
+            background-color: #f9f9ff;
+            transform: scale(1.02);
         }
         .lesson h2 {
-            margin: 0 0 5px;
-            font-size: 1.2em;
+            margin: 0 0 8px;
+            font-size: 1.3em;
         }
         .lesson p {
             margin: 0;
@@ -49,10 +53,21 @@
         .lesson.today {
             background: #0078D7;
             color: white;
-            border-radius: 5px;
+            border-radius: 8px;
         }
         .lesson.today h2, .lesson.today p {
             color: white;
+        }
+        .lesson.today:hover {
+            transform: none;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #0078D7;
+            color: white;
+            font-size: 0.9em;
         }
     </style>
 </head>
@@ -61,82 +76,64 @@
         <h1>Suivi des Cours du Permis</h1>
     </header>
     <div class="container">
-        <div class="lesson today">
-            <h2>13/01/25 : La vitesse</h2>
-            <p>Leçon du jour</p>
-        </div>
-        <div class="lesson">
-            <h2>14/01/25 : Croiser et dépasser</h2>
-        </div>
-        <div class="lesson">
-            <h2>15/01/25 : Stationner ou s'arrêter</h2>
-        </div>
-        <div class="lesson">
-            <h2>16/01/25 : Conduire - Être en état de conduire</h2>
-        </div>
-        <div class="lesson">
-            <h2>17/01/25 : Conduire dans des conditions difficiles</h2>
-        </div>
-        <div class="lesson">
-            <h2>18/01/25 : Sur l'autoroute</h2>
-        </div>
-        <div class="lesson">
-            <h2>19/01/25 : La traversée des zones dangereuses</h2>
-        </div>
-        <div class="lesson">
-            <h2>20/01/25 : Le partage de la rue</h2>
-        </div>
-        <div class="lesson">
-            <h2>21/01/25 : Les spécificités des autres usagers</h2>
-        </div>
-        <div class="lesson">
-            <h2>22/01/25 : Les documents administratifs</h2>
-        </div>
-        <div class="lesson">
-            <h2>23/01/25 : Le chargement</h2>
-        </div>
-        <div class="lesson">
-            <h2>24/01/25 : Le permis à points</h2>
-        </div>
-        <div class="lesson">
-            <h2>25/01/25 : Les infractions</h2>
-        </div>
-        <div class="lesson">
-            <h2>26/01/25 : Voyager à l'étranger</h2>
-        </div>
-        <div class="lesson">
-            <h2>27/01/25 : Porter secours</h2>
-        </div>
-        <div class="lesson">
-            <h2>28/01/25 : S'installer au poste de conduite</h2>
-        </div>
-        <div class="lesson">
-            <h2>29/01/25 : Entrer et sortir du véhicule</h2>
-        </div>
-        <div class="lesson">
-            <h2>30/01/25 : Le fonctionnement</h2>
-        </div>
-        <div class="lesson">
-            <h2>31/01/25 : L'entretien et le dépannage</h2>
-        </div>
-        <div class="lesson">
-            <h2>01/02/25 : L'installation des passagers</h2>
-        </div>
-        <div class="lesson">
-            <h2>02/02/25 : L'installation des enfants</h2>
-        </div>
-        <div class="lesson">
-            <h2>03/02/25 : Les aides technologiques</h2>
-        </div>
-        <div class="lesson">
-            <h2>04/02/25 : Choisir l'écomobilité</h2>
-        </div>
-        <div class="lesson">
-            <h2>05/02/25 : Choisir son véhicule</h2>
-        </div>
-        <div class="lesson">
-            <h2>06/02/25 : Être éco-conducteur</h2>
+        <div id="lessons">
+            <!-- Leçons seront insérées dynamiquement ici -->
         </div>
     </div>
+    <footer>
+        © 2025 Suivi des Cours
+    </footer>
+    <script>
+        // Liste des leçons avec les dates
+        const lessons = [
+            { date: "13/01/25", title: "La vitesse" },
+            { date: "14/01/25", title: "Croiser et dépasser" },
+            { date: "15/01/25", title: "Stationner ou s'arrêter" },
+            { date: "16/01/25", title: "Conduire - Être en état de conduire" },
+            { date: "17/01/25", title: "Conduire dans des conditions difficiles" },
+            { date: "18/01/25", title: "Sur l'autoroute" },
+            { date: "19/01/25", title: "La traversée des zones dangereuses" },
+            { date: "20/01/25", title: "Le partage de la rue" },
+            { date: "21/01/25", title: "Les spécificités des autres usagers" },
+            { date: "22/01/25", title: "Les documents administratifs" },
+            { date: "23/01/25", title: "Le chargement" },
+            { date: "24/01/25", title: "Le permis à points" },
+            { date: "25/01/25", title: "Les infractions" },
+            { date: "26/01/25", title: "Voyager à l'étranger" },
+            { date: "27/01/25", title: "Porter secours" },
+            { date: "28/01/25", title: "S'installer au poste de conduite" },
+            { date: "29/01/25", title: "Entrer et sortir du véhicule" },
+            { date: "30/01/25", title: "Le fonctionnement" },
+            { date: "31/01/25", title: "L'entretien et le dépannage" },
+            { date: "01/02/25", title: "L'installation des passagers" },
+            { date: "02/02/25", title: "L'installation des enfants" },
+            { date: "03/02/25", title: "Les aides technologiques" },
+            { date: "04/02/25", title: "Choisir l'écomobilité" },
+            { date: "05/02/25", title: "Choisir son véhicule" },
+            { date: "06/02/25", title: "Être éco-conducteur" },
+        ];
+
+        // Obtenir la date actuelle en format DD/MM/YY
+        const today = new Date();
+        const formattedToday = today.toLocaleDateString('fr-FR', {
+            day: '2-digit',
+            month: '2-digit',
+            year: '2-digit',
+        });
+
+        const lessonsContainer = document.getElementById('lessons');
+
+        lessons.forEach(lesson => {
+            const lessonDiv = document.createElement('div');
+            lessonDiv.className = 'lesson';
+            if (lesson.date === formattedToday) {
+                lessonDiv.classList.add('today');
+                lessonDiv.innerHTML = `<h2>${lesson.date} : ${lesson.title}</h2><p>Leçon du jour</p>`;
+            } else {
+                lessonDiv.innerHTML = `<h2>${lesson.date} : ${lesson.title}</h2>`;
+            }
+            lessonsContainer.appendChild(lessonDiv);
+        });
+    </script>
 </body>
 </html>
